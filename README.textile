@@ -1,0 +1,5 @@
+h1. SALT: Self Archiving Legacy Toolkit
+
+SALT is Stanford's first Hydra app for archival content. SALT is a specialized implementation of "Hydrangea":http://github.com/mediashelf/hydrangea 
+
+It's built on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org

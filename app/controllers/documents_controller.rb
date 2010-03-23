@@ -33,7 +33,7 @@ class DocumentsController < ApplicationController
     # Sets the 1st and 2nd "medium" values on any appropriate datasreams in the _PID_ document, overwriting any existing values.
     def update
       @document = SaltDocument.find(params[:id])
-      attrs = unescape_keys(params[:document])
+      attrs = unescape_keys(params[:salt_document])
       logger.debug("attributes submitted: #{attrs.inspect}")
       result = @document.update_indexed_attributes(attrs)
       @document.save

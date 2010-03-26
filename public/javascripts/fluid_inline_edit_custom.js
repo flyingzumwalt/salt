@@ -113,11 +113,11 @@ var makeAllButtons = function (editors) {
  */
  
 function insertValue(fieldName) {
-  var values_list = jQuery("#document_"+fieldName+"_values");
+  var values_list = jQuery("#salt_document_"+fieldName+"_values");
   var new_value_index = values_list.children('li').size()
-  var unique_id = "document_" + fieldName + "_" + new_value_index;
+  var unique_id = "salt_document_" + fieldName + "_" + new_value_index;
   
-  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="salt_document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
   div.appendTo(values_list); 
   var newVal = fluid.inlineEdit("#"+unique_id, {
     componentDecorators: {
@@ -126,7 +126,8 @@ function insertValue(fieldName) {
     listeners : {
       onFinishEdit : myFinishEditListener,
       modelChanged : myModelChangedListener
-    }
+    },
+    defaultViewText: "click to edit"
   });
   newVal.edit();
 }
@@ -138,7 +139,7 @@ function insertValue(fieldName) {
  
  function insertTextAreaValue(fieldName) {
    var d = new Date(); // get milliseconds for unique identfier
-   var unique_id = "document_" + fieldName + "_" + d.getTime();
+   var unique_id = "salt_document_" + fieldName + "_" + d.getTime();
    // <div class="flc-inlineEdit-text">&nbsp;
    // </div>
    // <div class="flc-inlineEdit-editContainer">
@@ -146,7 +147,7 @@ function insertValue(fieldName) {
    //     <button class="save">Save</button> <button class="cancel">Cancel</button>
    // </div>
    var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
-   div.appendTo("#document_"+fieldName+"_values"); 
+   div.appendTo("#salt_document_"+fieldName+"_values"); 
    //return false;
 
    var newVal = fluid.inlineEdit.FCKEditor("#"+unique_id, {
